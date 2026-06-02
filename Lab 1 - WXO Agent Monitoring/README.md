@@ -138,11 +138,11 @@ This approach demonstrates:
 
    <img width="1000" alt="image" src="./images/image2.png">
 
-3. Select **Import** → **Local instance**
+3. Select **Import** → **OpenAPI**
 
    <img width="1000" alt="image" src="./images/image32.png">
 
-4. The tool has been uploaded to the environment already. Select **Quotation tool** and click **Add to agent**
+4. Upload the product_tool.json file that is provided to you Select **Recommendation tool** and click **Add to agent**
 
    <img width="1000" alt="image" src="../Lab 1 - WXO Agent Monitoring/images/newImage20.png">
 
