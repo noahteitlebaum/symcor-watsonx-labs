@@ -150,6 +150,8 @@ This approach demonstrates:
 
    <img width="1000" alt="image" src="../Lab 1 - WXO Agent Monitoring/images/newImage52.png">
 
+   <img width="1000" alt="image" src="../Lab 1 - WXO Agent Monitoring/images/newImage53.png">
+
 #### 3.2 Configure Agent Behavior
 
 Scroll down to the **Behavior** section and add the following instructions:
