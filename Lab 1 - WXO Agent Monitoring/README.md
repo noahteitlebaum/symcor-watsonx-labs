@@ -142,7 +142,7 @@ This approach demonstrates:
 
    <img width="1000" alt="image" src="./images/newImage50.png">
 
-4. Upload the product_tool.json file that is provided to you Select **Recommendation tool** and click **Add to agent**
+4. Download and upload the product_tool.json file that is provided to you below.  Select **Recommendation tool** and click **Add to agent**
 
 [Download product_tool.json](https://github.com/noahteitlebaum/symcor-watsonx-labs/blob/main/Lab%201%20-%20WXO%20Agent%20Monitoring/instructor/product_tool.json)
 
