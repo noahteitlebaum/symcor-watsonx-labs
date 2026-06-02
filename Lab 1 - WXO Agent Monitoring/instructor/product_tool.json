@@ -1,0 +1,250 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Credit Card Recommendation Tool API",
+    "version": "0.1.0",
+    "description": "API for generating Canadian Bank credit card recommendations based on card type, intent, province, credit limit, and rewards preference"
+  },
+  "servers": [
+    {
+    "url": "https://hardhat-contour-patchwork.ngrok-free.dev",
+    "description": "Local server via ngrok"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Root",
+        "description": "Root endpoint with API information",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/models": {
+      "get": {
+        "summary": "Get Cards",
+        "description": "Get all available Canadian Bank credit cards",
+        "operationId": "get_cards_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotation_tool": {
+      "post": {
+        "summary": "Recommendation Tool",
+        "description": "Generate a recommendation for a Canadian Bank credit card\n\nParameters:\n- card: Canadian Bank card name (Maple Rewards Visa Infinite, Maple Cash Back Mastercard, Maple Travel Elite Visa, Maple No-Fee Everyday Mastercard)\n- intent: Application intent (new card, balance transfer, credit limit increase)\n- province: Canadian province code (ON, QC, BC, AB, etc.)\n- credit_limit: Requested credit limit in CAD\n- rewards_preference: Preferred rewards type (cash back, travel points, no fee)",
+        "operationId": "quotation_tool_quotation_tool_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecommendationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecommendationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "RecommendationRequest": {
+        "properties": {
+          "card": {
+            "type": "string",
+            "title": "Card",
+            "description": "Canadian Bank credit card name",
+            "enum": ["Maple Rewards Visa Infinite", "Maple Cash Back Mastercard", "Maple Travel Elite Visa", "Maple No-Fee Everyday Mastercard"]
+          },
+          "intent": {
+            "type": "string",
+            "title": "Intent",
+            "description": "Application intent",
+            "enum": ["new card", "balance transfer", "credit limit increase"]
+          },
+          "province": {
+            "type": "string",
+            "title": "Province",
+            "description": "Canadian province code",
+            "enum": ["ON", "QC", "BC", "AB", "MB", "SK", "NS", "NB", "PE", "NL"]
+          },
+          "credit_limit": {
+            "type": "number",
+            "title": "Credit Limit",
+            "description": "Requested credit limit in CAD"
+          },
+          "rewards_preference": {
+            "type": "string",
+            "title": "Rewards Preference",
+            "description": "Preferred rewards type",
+            "enum": ["cash back", "travel points", "no fee"]
+          }
+        },
+        "type": "object",
+        "required": [
+          "card",
+          "intent",
+          "province",
+          "credit_limit",
+          "rewards_preference"
+        ],
+        "title": "RecommendationRequest"
+      },
+      "RecommendationResponse": {
+        "properties": {
+          "card": {
+            "type": "string",
+            "title": "Card"
+          },
+          "intent": {
+            "type": "string",
+            "title": "Intent"
+          },
+          "province": {
+            "type": "string",
+            "title": "Province"
+          },
+          "credit_limit": {
+            "type": "number",
+            "title": "Credit Limit"
+          },
+          "rewards_preference": {
+            "type": "string",
+            "title": "Rewards Preference"
+          },
+          "annual_fee": {
+            "type": "number",
+            "title": "Annual Fee"
+          },
+          "monthly_fee": {
+            "type": "number",
+            "title": "Monthly Fee"
+          },
+          "total_annual_cost": {
+            "type": "number",
+            "title": "Total Annual Cost"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "message": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "card",
+          "intent",
+          "province",
+          "credit_limit",
+          "rewards_preference",
+          "annual_fee",
+          "monthly_fee",
+          "total_annual_cost",
+          "description",
+          "status"
+        ],
+        "title": "RecommendationResponse"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
