@@ -140,15 +140,15 @@ This approach demonstrates:
 
 3. Select **Import** → **OpenAPI**
 
-   <img width="1000" alt="image" src="./images/image32.png">
+   <img width="1000" alt="image" src="./images/newImage50.png">
 
 4. Upload the product_tool.json file that is provided to you Select **Recommendation tool** and click **Add to agent**
 
-   <img width="1000" alt="image" src="../Lab 1 - WXO Agent Monitoring/images/newImage20.png">
+   <img width="1000" alt="image" src="../Lab 1 - WXO Agent Monitoring/images/newImage51.png">
 
 5. Verify the tool appears in the Toolset section
 
-   <img width="1000" alt="image" src="../Lab 1 - WXO Agent Monitoring/images/newImage21.png">
+   <img width="1000" alt="image" src="../Lab 1 - WXO Agent Monitoring/images/newImage52.png">
 
 #### 3.2 Configure Agent Behavior
 
