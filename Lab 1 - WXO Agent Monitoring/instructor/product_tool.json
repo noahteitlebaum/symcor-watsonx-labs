@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-    "url": "https://hardhat-contour-patchwork.ngrok-free.dev",
+    "url": "https://api.us-south.watson-orchestrate.cloud.ibm.com/instances/42342822-76d0-467c-91e7-301e45295ef9",
     "description": "Local server via ngrok"
     }
   ],
